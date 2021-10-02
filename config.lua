@@ -38,7 +38,74 @@ Config.PolyZones = {
 }
 
 Config.TargetBones = {
-
+    ["main"] = {
+        bones = {
+            "door_dside_f",
+            "door_dside_r",
+            "door_pside_f",
+            "door_pside_r",
+            "steering",
+            "hbgrip_l",
+            "hbgrip_r"
+        },
+        options = {
+            {
+                type = "client",
+                event = "vehiclekeys:client:GiveKeys",
+                icon = "fad fa-key",
+                label = "GIVE KEYS",
+            },
+            {
+                type = "client",
+                event = "police:client:PutPlayerInVehicle",
+                icon = "fas fa-chevron-circle-left",
+                label = "PLACE IN VEHICLE",
+            },
+            {
+                type = "client",
+                event = "police:client:SetPlayerOutVehicle",
+                icon = "fas fa-chevron-circle-right",
+                label = "TAKE OUT OF VEHICLE",
+            },
+            {
+                type = "client",
+                event = "police:client:ImpoundVehicle",
+                icon = "fas fa-car",
+                label = "IMPOUND VEHICLE",
+                job = 'police'
+            },
+            {
+                type = "client",
+                event = "mechanicoptions:menu",
+                icon = "fas fa-car",
+                label = "MECHANIC MENU",
+                job = 'mechanic'
+            },
+            {
+                type = "client",
+                event = "qb-trunk:client:GetIn",
+                icon = "fas fa-user-secret",
+                label = "GET IN TRUNK",
+            },
+            {
+                type = "client",
+                event = "vehicle:flipit",
+                icon = "fad fa-car-tilt",
+                label = "FLIP VEHICLE",
+                canInteract = function()
+                    vehicle = QBCore.Functions.GetClosestVehicle()
+                    return not IsVehicleOnAllWheels(vehicle)
+                end,
+            },
+            {
+                type = "client",
+                event = "LegacyFuel:client:fuelcar",
+                icon = "fas fa-gas-pump",
+                label = "Refuel Vehicle",
+            },
+        },
+        distance = 3.0
+    },
 }
 
 Config.TargetEntities = {
